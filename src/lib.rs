@@ -17,6 +17,20 @@ pub async fn main_js() -> Result<(), JsValue> {
   log::info!("creating bevy world");
   log::info!("starting run loop on window {:?}", WINDOW);
 
+  //   let context = Context::new(WINDOW.clone());
+  //   let ui_manager = GameUiManager::new(&context);
+  //   let app_shared = Shared::new(App {
+  //     context: context,
+  //     ui_manager: ui_manager,
+  //     fps_tracker: FpsTracker::new(),
+  //   });
+  
+  //   register_on_error_listener(&window);
+  //   register_on_visibility_change_listener(&window, app_shared.clone());
+  //   register_input_listeners(&window, app_shared.clone());
+  
+  //   console::log_1(&JsValue::from_str("Starting run_loop(app_shared)!"));
+  //   run_loop(app_shared);
   log::info!("starting run loop");
   Ok(())
 }
