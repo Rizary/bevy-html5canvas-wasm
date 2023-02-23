@@ -7,14 +7,25 @@ categories = ["wasm"]
 readme = "README.md"
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
+
+[workspace]
+resolver = "2" # wgpu/Bevy need this
 
 [profile.release]
 # This makes the compiled code faster and smaller, but it makes compiling slower,
 # so it's only enabled in release mode.
-lto = true
+lto = "fat"
 opt-level = 'z'
 codegen-units = 1
+panic = 'abort'
+
+[profile.dev]
+opt-level = 1
+lto = "thin"
+
+[profile.dev.package."*"]
+opt-level = 3
 
 [dependencies]
 # The `wasm-bindgen` crate provides the bare minimum functionality needed
@@ -32,10 +43,30 @@ fastrand = "1.8.0"
 serde = { version = "*", features = ["derive"] }
 serde_json = "1.0.92"
 futures = "0.3.26"
+bevy_asset_loader = "0.14.1"
+# bevy_ninepatch = "0.9.1"
 
 [features]
 ts_test = []
 develop = ["wasm-logger", "console_error_panic_hook" ]
+
+# bevy engine
+[dependencies.bevy]
+version = "0.9.1"
+default-features = false
+features = [
+    "bevy_asset",
+    "bevy_core_pipeline",
+    "bevy_scene",
+    "bevy_gltf",
+    "bevy_winit",
+    "bevy_render",
+    "bevy_text",
+    "bevy_sprite",
+    "png",
+    "animation",
+    "bevy_gilrs",
+]
 
 # The `web-sys` crate allows you to interact with the various browser APIs,
 # like the DOM.

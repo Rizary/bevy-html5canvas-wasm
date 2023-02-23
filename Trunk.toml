@@ -1,0 +1,25 @@
+# Learn more: https://trunkrs.dev/configuration/#trunk-toml
+
+[build]
+# The index HTML file to drive the bundling process.
+target = "index.html"
+dist = "devhtml"
+public_url = "/"
+filehash = true
+
+[watch]
+watch = [ 
+    "src",
+    "static/",
+    "devhtml/index.html"
+]
+
+[serve]
+address = "127.0.0.1"
+port = 8089
+open = false
+no_autoreload = true
+
+[clean]
+dist = "devhtml"
+cargo = true

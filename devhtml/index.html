@@ -1,19 +1,46 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html><head>
+    <title>WASM Lobby</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 
-<head>
-    <title>TodoMVC Nix Dev</title>
-    <link rel="stylesheet"
-        href="./css/main.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Game Lobby">
+    <meta property="og:description" content="Game Lobby using bevy and wasm">
+
+    <!-- Mobile -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Trunk Directives -->
+    
+    <script type="module">import init from '/bevy-html5canvas-wasm-8cbbcae282861b88.js';init('/bevy-html5canvas-wasm-8cbbcae282861b88_bg.wasm');</script>
+<style>
+    #consolelog-div {
+      display: none;
+      max-height: 100vh;
+      overflow: hidden;
+      position: absolute;
+      z-index: 10;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.4);
+      pointer-events:none; 
+      touch-action:none;
+    }
+</style>
+<link rel="preload" href="/bevy-html5canvas-wasm-8cbbcae282861b88_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/bevy-html5canvas-wasm-8cbbcae282861b88.js"></head>
 
 <body>
-    <div id="app">
+    <div id="consolelog-div"></div>
+    <canvas id="app">
 
-    </div>
+    </canvas>
     <!-- Frontend goes here -->
     <script src="./js/index.js"></script>
-</body>
 
-</html>
+
+
+</body></html>
