@@ -11,7 +11,8 @@ filehash = true
 watch = [ 
     "src",
     "static/",
-    "devhtml/index.html"
+    "index.html",
+    "package.json"
 ]
 
 [serve]
@@ -21,5 +22,10 @@ open = false
 no_autoreload = true
 
 [clean]
-dist = "devhtml"
+dist = "dist"
 cargo = true
+
+[[hooks]]
+stage = "pre_build"
+command = "npm"
+command_arguments = ["run", "watch:trunk"]

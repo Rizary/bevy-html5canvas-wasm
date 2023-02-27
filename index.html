@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
-
 <head>
     <title>WASM Lobby</title>
-    <link rel="stylesheet"
-        href="./css/main.css">
+    <!-- uncomment below if you use trunk and commented the tag after -->
+    <!-- <link data-trunk rel="inline" href="static/css/main.css"> -->
+    <link rel="stylesheet" href="./static/css/main.css">
     <!-- Meta -->
     <meta charset=utf-8 />
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no" />
@@ -22,26 +21,13 @@
     <link rel=copy-dir data-trunk href="static/" />
     <link rel=rust data-trunk />
 </head>
-<style>
-    #consolelog-div {
-      display: none;
-      max-height: 100vh;
-      overflow: hidden;
-      position: absolute;
-      z-index: 10;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.4);
-      pointer-events:none; 
-      touch-action:none;
-    }
-</style>
-<body>
-    <div id="consolelog-div"></div>
-    <canvas id="app">
 
-    </canvas>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <!-- Frontend goes here -->
-    <script src="./js/index.js"></script>
+    <!-- uncomment below if you use trunk and commented the tag after -->
+    <!-- <link data-trunk rel="inline" href="static/css/main.css"> -->
+    <script src="./static/index.js"></script>
 </body>
 
 </html>

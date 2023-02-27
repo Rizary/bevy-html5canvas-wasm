@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @layer responsive {
+    .masonry {
+      column-gap: 1em;
+      column-count: 1;
+    }
+    .masonry-sm {
+      column-gap: 1em;
+      column-count: 2;
+    }
+    .masonry-md {
+      column-gap: 1em;
+      column-count: 2;
+    }
+    .break-inside {
+      break-inside: avoid;
+    }
+  }
+}
+
+body {
+  margin:0%;
+  @apply bg-neutral-white text-black;
+  font-family: "Inter", sans-serif;
+}

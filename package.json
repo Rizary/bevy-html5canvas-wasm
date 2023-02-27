@@ -3,28 +3,39 @@
     "version": "0.1.0",
     "description": "frontend wasm in rust",
     "license": "MIT",
-    "type":"module",
+    "type": "module",
     "private": true,
     "scripts": {
-        "watch": "run-p watch:rollup",
-        "build": "run-p build:rollup",
-        "watch:rollup": "rollup -c rollup.dev.mjs --watch",
-        "build:rollup": "rollup -c rollup.prod.mjs",
-        "clean": "rimraf ./devhtml/js"
-    },
-    "dependencies": {
+        "watch": "NODE_ENV=development run-p watch:tailwind watch:rollup",
+        "build": "NODE_ENV=production  run-p build:tailwind build:trunk",
+        "watch:tailwind": "postcss styles/globals.css -o static/css/main.css -w",
+        "build:tailwind": "postcss styles/globals.css -o static/css/main.css",
+        "watch:trunk": "NODE_ENV=development run-p watch:tailwind watch:rollup",
+        "build:trunk": "trunk build",
+        "watch:rollup": "NODE_ENV=development rollup -c rollup.dev.js --watch",
+        "build:rollup": "NODE_ENV=production rollup -c rollup.prod.js"
     },
     "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^5.0.0",
         "@rollup/plugin-commonjs": "^24.0.1",
         "@rollup/plugin-node-resolve": "^15.0.1",
+        "@tailwindcss/forms": "^0.5.3",
         "@wasm-tool/rollup-plugin-rust": "^2.3.3",
         "autoprefixer": "^10.4.13",
+        "cssnano": "^5.1.15",
         "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.21",
+        "postcss-clean": "^1.2.2",
+        "postcss-cli": "^10.1.0",
+        "postcss-import": "^15.1.0",
+        "postcss-nested": "^6.0.1",
         "rimraf": "^4.1.2",
         "rollup": "^3.14.0",
+        "rollup-plugin-copy": "^3.4.0",
         "rollup-plugin-inject-process-env": "^1.3.1",
         "rollup-plugin-livereload": "^2.0.5",
         "rollup-plugin-serve": "^2.0.2",
-        "rollup-watch": "^4.3.1"
+        "rollup-watch": "^4.3.1",
+        "tailwindcss": "^3.2.7"
     }
 }
