@@ -1,5 +1,12 @@
 use bevy::prelude::*;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(SystemLabel)]
+pub enum ModelsLabel {
+    // system that loaded the models
+    Loaded,
+}
+
 pub struct ModelsPlugin;
 
 #[derive(Resource)]
@@ -9,7 +16,7 @@ pub struct ModelsAssets {
 
 impl Plugin for ModelsPlugin {
     fn build(&self, app: &mut App) {
-        app.add_startup_system(setup_resources);
+        app.add_startup_system_to_stage(StartupStage::PreStartup, setup_resources.label(ModelsLabel::Loaded));
     }
 }
 

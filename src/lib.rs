@@ -13,7 +13,9 @@ use bevy_rapier2d::prelude::NoUserData;
 use bevy_rapier2d::render::RapierDebugRenderPlugin;
 use constants::*;
 use tracing::Level;
+use user_input::PlayerInput;
 use wasm_bindgen::{prelude::*, JsCast};
+use leafwing_input_manager::prelude::*;
 
 use bevy::{
     diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin},
@@ -68,6 +70,7 @@ pub async fn main_js() {
         )
         .add_plugin(RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(16.))
         .add_plugin(RapierDebugRenderPlugin::default())
+        .add_plugin(InputManagerPlugin::<PlayerInput>::default())
         .add_startup_system(spawn_camera)
         .add_startup_system(spawn_map)
         .add_plugin(ModelsPlugin)
