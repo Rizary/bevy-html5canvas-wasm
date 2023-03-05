@@ -70,28 +70,36 @@ fn move_player(
     rapier_context: Res<RapierContext>,
 ) {
     for (mut velocity, input, mut pos, _) in &mut player {
-        let mut direction_x: f32 = 0.0;
-        let mut direction_y = 0.0;
-
         if input.pressed(PlayerInput::Up) {
-            error_span!("Up");
-            direction_y += PLAYER_ACCELERATION;
-            // velocity.linvel.y += PLAYER_ACCELERATION;
+            if (pos.translation.y + PLAYER_ACCELERATION) >= (TOP_WALL - WALL_THICKNESS) {
+                pos.translation.y = pos.translation.y - PLAYER_ACCELERATION;
+            } else {
+                pos.translation.y = pos.translation.y + PLAYER_ACCELERATION;
+            }
         } else if input.pressed(PlayerInput::Down) {
-            direction_y -= PLAYER_ACCELERATION;
-            // velocity.linvel.y -= PLAYER_ACCELERATION;
-        } else if input.pressed(PlayerInput::Left) {
-            // direction_x += PLAYER_ACCELERATION;
-            direction_x -= PLAYER_ACCELERATION;
+            if (pos.translation.y - PLAYER_ACCELERATION) <= (BOTTOM_WALL + WALL_THICKNESS) {
+                pos.translation.y = pos.translation.y + PLAYER_ACCELERATION;
+            } else {
+                pos.translation.y = pos.translation.y - PLAYER_ACCELERATION;
+            }
         } else if input.pressed(PlayerInput::Right) {
-            // direction_x -= PLAYER_ACCELERATION;
-            direction_x += PLAYER_ACCELERATION;
-        };
-        // velocity.linvel.x = velocity.linvel.x.clamp(-PLAYER_MAX_SPEED, PLAYER_MAX_SPEED);
-        // velocity.linvel.y = velocity.linvel.y.clamp(-PLAYER_MAX_SPEED, PLAYER_MAX_SPEED);
-        pos.translation.y = pos.translation.y + direction_y;
-        pos.translation.x = pos.translation.x + direction_x;
-        dbg!(pos.translation);
-        dbg!(direction_x, direction_y);
+            if (pos.translation.x + PLAYER_ACCELERATION) >= RIGHT_WALL {
+                pos.translation.x = pos.translation.x - PLAYER_ACCELERATION;
+            } else {
+                pos.translation.x = pos.translation.x + PLAYER_ACCELERATION;
+            }
+        } else if input.pressed(PlayerInput::Left) {
+            if (pos.translation.x - PLAYER_ACCELERATION) <= LEFT_WALL {
+                pos.translation.x = pos.translation.x + PLAYER_ACCELERATION;
+            } else {
+                pos.translation.x = pos.translation.x - PLAYER_ACCELERATION;
+            }
+        }; 
+        if (pos.translation.x == X_GREEN_BLOCK) || (pos.translation.y == Y_GREEN_BLOCK) {
+            logwithdiv("ENTER GREEN BLOCK")
+        }
+        if (pos.translation.x == X_YELLOW_BLOCK) || (pos.translation.y == Y_YELLOW_BLOCK) {
+            logwithdiv("ENTER YELLOW BLOCK")
+        }
     }
 }

@@ -8,7 +8,7 @@ pub const PLAYER_SPAWMN_POS: Vec2 = Vec2::new(-150.,0.);
 pub const ASSET_SCALE: f32 = 20.0;
 
 // Wall Constants
-pub const WALL_THICKNESS: f32 = 1.0 * ASSET_SCALE;
+pub const WALL_THICKNESS: f32 = 1.5 * ASSET_SCALE;
 // x coordinates
 pub const LEFT_WALL: f32 = -500.0;
 pub const RIGHT_WALL: f32 = 500.0;
@@ -16,7 +16,7 @@ pub const RIGHT_WALL: f32 = 500.0;
 pub const TOP_WALL: f32 = 375.0;
 pub const BOTTOM_WALL: f32 = -375.0;
 
-pub const WALL_COLOR: Color = Color::NONE;
+pub const WALL_COLOR: Color = Color::MIDNIGHT_BLUE;
 
 // Block Alert constant
 // green_block coordinates
